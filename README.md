@@ -41,18 +41,18 @@ Start the server
 ```
 
 
-## Author
-
-
-- [@MondalSayantan](https://github.com/MondalSayantan)
-
-
 ## Features
 
 - Searching
 - filtering based on genres, content rating, view count, and release date.
 - uploading new videos by using external video links (eg: Youtube)
 - upvoting and downvoting
+
+
+## Author
+
+
+- [@MondalSayantan](https://github.com/MondalSayantan)
 
 
 ## Acknowledgements
