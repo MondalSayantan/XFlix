@@ -1,13 +1,11 @@
-const express = require('express');
-const compression = require('compression');
-const cors = require('cors');
-const httpStatus = require('http-status');
+const express = require("express");
+const compression = require("compression");
+const cors = require("cors");
+const httpStatus = require("http-status");
 const config = require("./config/config");
-const morgan = require("./config/morgan");
 const routes = require("./routes/v1");
 const helmet = require("helmet");
 const ApiError = require("./utils/ApiError");
-
 
 const app = express();
 
@@ -32,7 +30,7 @@ app.use("/v1", routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-    next(new ApiError(httpStatus.NOT_FOUND, "Not Found"));
-  });
+  next(new ApiError(httpStatus.NOT_FOUND, "Not Found"));
+});
 
 module.exports = app;
