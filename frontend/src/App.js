@@ -3,8 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
 
-export const endpoint =
-  "https://xflix-sayantan.herokuapp.com";
+export const endpoint = "http://localhost:8082";
 
 const App = () => {
   return (

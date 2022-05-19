@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import {
   Button,
   Dialog,
@@ -46,18 +47,14 @@ const UploadForm = ({ visibility, setVisibility }) => {
   const handleClickSubmit = () => {
     const uploadVideo = async (data) => {
       try {
-        const response = await fetch(`${endpoint}/v1/videos`, {
-          method: "POST",
-          header: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        const jsonResponse = await response.json();
+        const response = await Axios.post(`${endpoint}/v1/videos`, data);
+        console.log(response);
         if (response.status !== 201) {
-          throw new Error(jsonResponse);
+          throw new Error("Upload failed");
         }
         enqueueSnackbar("Video Upload Successful", { variant: "success" });
+        // reload the page
+        window.location.reload();
       } catch (error) {
         console.log(`Error in video upload: ${error.message}`);
         enqueueSnackbar("Video Upload Failed", { variant: "error" });
@@ -207,7 +204,11 @@ const UploadForm = ({ visibility, setVisibility }) => {
             >
               Submit
             </Button>
-            <Button sx={{ pl: 3 }} onClick={handleClose} id={"upload-btn-cancel"}>
+            <Button
+              sx={{ pl: 3 }}
+              onClick={handleClose}
+              id={"upload-btn-cancel"}
+            >
               Cancel
             </Button>
           </Grid>

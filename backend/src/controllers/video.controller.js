@@ -27,6 +27,7 @@ const getVideoByID = catchAsync(async (req, res) => {
 });
 
 const insertVideo = catchAsync(async (req, res) => {
+  console.log("Request received for adding video");
   const video = await videoService.addVideo(req.body);
   return res.status(httpStatus.CREATED).send(video);
 });
