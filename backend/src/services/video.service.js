@@ -11,10 +11,21 @@ const getVideosByQueries = async (queries) => {
       filters.push("7+", "12+", "16+", "18+");
     else {
       let age = Number(contentRatingInput.slice(0, -1)); // Slicing the input to remove the + and converting it to a number
-      if (age >= 7) filters.push("7+");
-      if (age >= 12) filters.push("12+");
-      if (age >= 16) filters.push("16+");
-      if (age >= 18) filters.push("18+");
+      if (age >= 18) {
+        filters.push("18+");
+      } else if (age >= 16) {
+        filters.push("16+");
+        filters.push("18+");
+      } else if (age >= 12) {
+        filters.push("12+");
+        filters.push("16+");
+        filters.push("18+");
+      } else if (age >= 7) {
+        filters.push("7+");
+        filters.push("12+");
+        filters.push("16+");
+        filters.push("18+");
+      }
     }
     return filters;
   };
